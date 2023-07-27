@@ -1,0 +1,14 @@
+module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    input sub,
+    output [31:0] sum
+);
+    reg w1;
+    reg [31:0] w3;
+  assign  w3 = {32{sub}}^b; 
+  
+        add16 dut1 (.a(a[15:0]),.b(w3[15:0]),.cin(sub),.sum(sum[15:0]),.cout(w1));
+        add16 dut2 (.a(a[31:16]),.b(w3[31:16]),.cin(w1),.sum(sum[31:16]),.cout(0));
+
+endmodule
